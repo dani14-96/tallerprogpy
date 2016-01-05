@@ -1,0 +1,1473 @@
+<!doctype html>
+<html lang="es">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>BioPython - ACM</title>
+
+		<meta name="description" content="Una presentación donde explicaremos los fundamentos de Python y sus aplicaciones en bioinformática">
+		<meta name="author" content="Daniel Garcíar">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+		<link rel="icon" href="images/favicon.ico" />
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+			
+		</script>
+		<style>
+			h1.lowercase{
+			text-transform: lowercase;}
+			.nota_pie{position:absolute; top: 90%; left:10%; text-align:'left'; vertical-align:'bottom';}
+			.tabla{font-size: 0.1em; line-height: 0.6em}
+		</style>
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+
+				<!--<section>
+					<h1>Python y Bioinformática</h1>
+					<h3>Código + Biología = Win</h3>
+					<p>
+						<small><a href="http://hakim.se">Diego Martín</a> / <a href="http://twitter.com/alternhuman">@alternhuman</a></small>
+						<small>|</small> 
+						<small><a href="http://hakim.se">Daniel García</a> / <a href="http://twitter.com/dani14_96">@dani14_96</a></small>
+					</p>
+				</section>-->
+				<img src="images/usal.png" width='50%' style='vertical-align:middle;opacity:0.1'>
+				<div position='absolute' top='50%'>
+					<div position='relative' top='-50%'>
+						
+					</div>
+				</div>
+				
+				<section>
+					<h2>Introducción a la programación</h2>
+						<h3>Y sus aplicaciones en bioinformática</h3>
+						<p>
+							<small text-align='center'>Por:</small>
+							<small><a href="http://dgbioinformatics.esy.es">Dani García</a> / <a href="http://twitter.com/dani14_96">@dani14_96</a><br><a href="http://martinarroyo.net">Diego Martín</a> / <a href="http://twitter.com/alternhuman">@alternhuman</a><br></small>
+				</section>
+				<section>
+					<section>
+						<h2>Introducción a la programación</h2>
+						<p>La programación es la técnica que permite indicar a un ordenador cómo realizar una serie de tareas</p>
+						<p>Existen diferentes técnicas y paradigmas según el problema a resolver</p>
+					</section>
+					<section>
+						<h2>ENIAC, el primer ordenador de propósito general</h2>
+						<div style="float:left;display:inline">
+						<img width="500px" src="http://upload.wikimedia.org/wikipedia/commons/3/3b/Two_women_operating_ENIAC.gif"/>
+						<img width="422px" src="http://upload.wikimedia.org/wikipedia/commons/1/16/Classic_shot_of_the_ENIAC.jpg"/>
+						</div>
+						<p>Diseñado para propósitos militares</p>
+					</section>
+					<section>
+						<h2>El primer bug</h2>
+						<img width="700px" src="http://upload.wikimedia.org/wikipedia/commons/8/8a/H96566k.jpg"/>
+					</section>
+					<section>
+						<h2>Primeros proyectos de éxito</h2>
+
+						<div style="float:left;display:inline">
+						<img width="400px" src="http://decodedscience.com/wp-content/uploads/2012/06/Front-of-a-bombe-code-breaking-machine-at-Bletchley-Park.jpg"/>
+						<img width="400px" src="https://pbs.twimg.com/media/B4haKmCCEAE8YUV.png"/>
+						</div>
+					</section>
+					<section>
+						<h2>La computación evoluciona rápidamente durante el siglo XX</h2>
+						<img src="http://upload.wikimedia.org/wikipedia/commons/4/4c/Blue-punch-card-front-horiz.png"/>
+						<img>
+					</section>
+					<section>
+						<h2>¿Qué es un programa?</h2>
+						<img width="400px" src="http://www.linuxjournal.com/files/linuxjournal.com/linuxjournal/articles/063/6391/6391f1.jpg"/>
+						
+					</section>
+					<section>
+						<p>Un programa no es más que un conjunto de instrucciones muy sencillas que "entran" en un procesador, y realizan una serie de operaciones</p>
+						<p>Cada procesador utiliza un conjunto de instrucciones diferente</p>
+					</section>
+					<section>
+						<h2>Un programa en ensamblador</h2>
+						<img src="http://www.allbusiness.com/asset/image/glossaries/4967331.gif"/>
+					</section>
+					<section>
+						<h2>Lenguajes de programación</h2>
+						<p>Los programas en ensamblador son complejos y difíciles de mantener</p>
+						<p>Por ello, surgen lenguajes que simplifican esta tarea mediante un proceso de compilación o interpretación</p>
+						<img src="http://www.webopedia.com/FIG/COMPILE.gif"/>
+					</section>
+					<section>
+						<h2>Compilado vs. Interpretado</h2>
+						<img src="http://www.tml.tkk.fi/Opinnot/Tik-110.501/1998/papers/6secinjava/fig1.gif"/>
+					</section>
+					<section>
+						<h2>Compilado vs. Interpretado</h2>
+						<img src="http://learntocodewith.me/wp-content/uploads/2014/04/compiled-interpreted-languages.jpg?460d28"/>
+					</section>
+					<section>
+						<img ="http://imgs.xkcd.com/comics/compiling.png"/>
+					</section>
+					<section>
+						
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Biotecnología Dorada</h2>
+						<h3>¿Qué es eso?</h3>
+						<div align='center' style='float:left; width:45%;'>
+							<h3  class='fragment'>Bioinformática</h3>
+						</div>
+						<div align='center' style='float:right; width:45%;margin-left:10%'>
+							<h3  class='fragment'>Biología Computacional</h3>
+						</div>
+						<div align='center' style='width:100%;margin-top:1%'>
+							<h3  class='fragment'>Biocomputación</h3>
+						</div>
+					</section>
+
+					<section>
+						<h2>Bioinformática</h2>
+						<p style='line-height:1;'>Desarrollo o aplicación de herramientas computacionales para el uso de datos biológicos (adquirir, almacenar, organizar, analizar o visualizar).</p>
+						<img src='images/binario.jpg' class='fragment current-visible' width='40%'>
+
+					</section>	
+
+					<section>
+						<h2>Biología Computacional</h2>
+						<p style='line-height:1;'>Desarrollo y aplicación de métodos teóricos y de análisis de datos, modelado matemático y técnicas de simulación computacional al estudio de sistemas biológicos, conductuales y sociales.</p>
+						<img src='images/einstein.jpeg' class='fragment current-visible' width='40%'>
+					</section>
+
+					<section>
+						<h2>Biocomputación</h2>
+						<p style='line-height:1;'>Diseño de computadores con componentes biológicos o que funcionan como seres vivos</p>
+						<img src='images/biocomputador.bmp' class='fragment current-visible' width='40%'>
+					</section>	
+				</section>
+				<section>
+					<h2>Perfil de bioinformático</h2>
+					<p>Se trata de un Ingeniero Informático con conocimientos y ténicas de dicha ingeniería (inteligencia artificial, ciencias de la computación, machine learning...), utilizados junto con conocimientos de otras disciplinas (estadística, matemática aplicada, bioquímica...)</p>
+				</section>
+				<section>
+					<section>
+						<h2>Principales proyectos</h2>
+						<ul style:'color:white;'>
+							<li><p>Alineamiento de secuencias y montaje de genoma</p></li>
+							<li><p>Predicción de genes y su expresión</p></li>
+							<li><p>Alineamiento estructural de proteínas</p></li>
+							<li><p>Predicción de estructuras de proteínas</p></li>
+						</ul>	
+					</section>
+					<section>
+						<h2>Más proyectos (igual de importantes)</h2>
+						<ul>	
+							<li><p>Modelado evolutivo</p></li>
+							<li><p>Secuenciación a gran escala</p></li>
+							<li><p>Estudio de la regulación genética mediante la interpretación de perfiles de expresión en MicroArrays</p></li>
+						</ul>
+					</section>	
+				</section>
+
+				<section>
+					<h2>¿Qué es Python?</h2>
+					<ul>
+						<li>Lenguaje de programación interpretado parecido a Perl y otros derivados de C</li>
+						<li class="fragment">Sintaxis más sencilla para el principiante y muy clara.</li>
+						<li class="fragment">Tipado dinámico fuerte, orientación a objetos y...<br>
+							¡es multiplataforma!</li>
+					</ul>
+					
+				</section>
+				<section>
+					<h2>Pros</h2>
+
+					<ul>
+						<li>Gestión automática de la memoria</li>
+						<li>Portable</li>
+						<li>Desarrollo rápido</li>
+					</ul>
+					<h2>Contras</h2>
+					<ul>
+						<li>Rendimiento</li>
+						<li>La sintaxis es sencilla,<br> pero hay que entender su funcionamiento</li>
+					</ul>
+				</section>
+				<section>
+					<section>
+						<h2>Tipos de datos básicos</h2>
+						<p>En Python no es necesario definir el tipo de cada variable (entero, real, caracter, cadena de caracteres). El entorno se encarga de la representación adecuada de cada elemento en cada momento.</p>
+						<p>Sin embargo, al trabajar con diferentes tipos de datos la conversión debe hacerse de forma explícita, o Python devolverá un error.</p>
+						<p class="fragment">Esto es lo que se conoce como <em>tipado dinámico fuerte</em></p>
+						<aside class="notes">Ejercicio de variables asignadas a otras con consola.</aside>
+					</section>
+					<section>
+						<h3>Números</h3>
+						<p>Python trabaja con cualquier valor numérico típico (entero, real, complejo...) y soporta por defecto la mayoría de operaciones comunes.</p>
+						<pre><code>complejo = 2.1 + 7.8j</code>
+						<code>real = 0.1e-3</code>
+						<code>entero = 0×17</code></pre>
+						<pre class="fragment"><code>entero_real = int(real)</code></pre>
+						<pre class="fragment"><code>real_entero = float(entero)</code></pre>
+						<pre class="fragment"><code>entero_cadena = int("10000")</code></pre>
+					</section>
+					<section>
+						<pre><code>entero1, entero2 = 10, 3</code>
+						<code class="fragment">entero1/entero2 # == 3</code>
+						<code class="fragment">float(entero1)/float(entero2) # == 3.3333333333333335</code>
+						<code class="fragment">float(entero1) // float(entero2) # == 3</code>
+						</pre>
+					</section>
+					<section>
+						<h3>Cadenas de texto</h3>
+						<p>Una cadena de texto consiste en una sucesión de caracteres.</p>
+						<p>Python ofrece formas de trabajar con diferentes codificaciones de caracteres.</p>
+						<pre><code>"cadena"
+r"cadena raw"
+u"cäðenα Ünicöde"
+"""cadena
+en varias
+líneas"""</code></pre>
+					</section>
+					<section>
+						<p><span style="color:#FF5E99">Importante:</span> Una cadena no puede modificarse una vez creada, pero se pueden realizar operaciones sobre la misma que retornen una nueva cadena.</p>
+						<p style="color:#FF5E99;">Mal (error en tiempo de ejecución)</p>
+						<pre><code>cadena="Gaudeamus igitur"
+cadena[0] = "G"
+cadena[1]="A" #...
+> TypeError: 'str' object does not support item assignment</code></pre>
+						<p style="color:green;">Bien</p>
+						<pre><code>cadena="Gaudeamus igitur"
+cadena_mayusculas=cadena.upper()
+> GAUDEAMUS IGITUR</code></pre>
+						<aside class="notes">
+							Usar cadena.py
+						</aside>
+					</section>
+					<section>
+						<h3>Booleanos</h3>
+						<code>True</code> / <code>False</code>
+						<p>Son un subconjunto de enteros (0,1)</p>
+						<p class="fragment">Permiten representar que algo es verdadero o falso</p>
+						<p class="fragment">Al ser un subconjunto de los enteros, cualquier valor distinto de 0 es equivalente a <code>True</code> y 0 es igual a <code>False</code>.</p>
+						<div class="fragment">
+						<p>También se aplica a cualquier tipo nulo</p>
+						<pre><code>cadena = ""
+if cadena:
+  print("La cadena no está vacía")
+else:
+  print("La cadena está vacía")</code></pre></div>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Ejemplos básicos</h2>
+						<pre><code>print("Hola, Mundo")</code>
+						<code>print("Nombre")
+nombre=raw_input()
+print("Encantado,"+nombre)</code></pre>
+					</section>
+					<section>
+						<h2>Ejemplos básicos</h2>
+						<pre><code>entero=3
+cadena="4"</code></pre>
+						<div class="fragment"><strong style="color:#FF5E99">Mal</strong>
+						<pre><code>print(entero+cadena)</code></pre></div>
+						<div class="fragment"><strong style="color:green">Bien</strong>
+						<pre><code>print(str(entero)+cadena)</code></pre></div>
+						<div class="fragment"><strong style="color:green">Bien</strong>
+						<pre><code>print(entero+int(cadena))</code></pre></div>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h3>Operadores</h3>
+						<table style='font-size:0.8em;'>
+							<thead>
+								<tr>
+									<th></th>
+									<th colspan='12'>Operadores</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Operador</td>
+									<td>Descripción</td>
+								</tr>
+								<tr>
+									<td>+ - * /</td>
+									<td>Suma, Resta, Multiplicación, División</td>
+								</tr>
+								<tr>
+									<td>**</td>
+									<td>Exponente</td>
+								</tr>
+								<tr>
+									<td>//</td>
+									<td>División entera</td>
+								</tr>
+								<tr>
+									<td>%</td>
+									<td>Módulo</td>
+								</tr>
+								<tr>
+									<td>==, !=, &lt;=, &gt;=, &lt;, &gt;</td>
+									<td>Igual, distinto, mayor/menor que...</td>
+							</tbody>
+						</table>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Tipos de datos avanzados</h2>
+						<p>Los tipos de datos básicos permiten trabajar con problemas sencillos, pero a veces son necesarias estructuras de información más complejas (o incluso definidas por nosotros mismos)</p>
+					</section>
+					<section>
+						<h3>Listas</h3>
+						<p>Las listas son colecciones ordenadas de datos</p>
+						<p>Admiten cualquier tipo de dato (y no tienen por qué ser uniformes)</p>
+						<pre><code>lista = [4,"8","15",16,23,42, "isla", True]
+print(lista[0])</code></pre>
+						<pre><code>inception = ["leonardo", ["di", "caprio"]]
+print(inception[1][0])</code></pre>
+					</section>
+					<section>
+						<h3>Operaciones con listas</h3>
+						<p>Python incorpora varias operaciones especiales para trabajar con listas de forma ágil</p>
+						<pre><code>numeros=[0,1,2,3,4,5,6,7,8,9]
+print(numeros[0:5])
+> [0, 1, 2, 3, 4]
+print(numeros[-1])
+> 9
+print(numeros[1:10:2])
+> [1, 3, 5, 7, 9]
+print(numeros[5:])
+> [5, 6, 7, 8, 9]</code></pre>
+					</section>
+					<section>
+						<h3>Tuplas</h3>
+						<p>Son muy similares a las listas</p>
+						<pre><code>tupla=(4,8,15,"16")</code></pre>
+						<p>Todas las operaciones de acceso son idénticas</p>
+						<strong>Una tupla no puede modificarse una vez declarada</strong>
+					</section>
+					<section>
+						<h3>Diccionarios</h3>
+						<p>Un diccionario es una estructura en la que cada miembro está formado por dos elementos, la clave y el valor</p>
+						<p>El acceso a los elementos se realiza por la clave asignada</p>
+						<div class="fragment"><pre><code>apellidos={"Hugo":"Reyes","Jack":"Shephard","Kate":"Austen"}</code>
+						<code>print(apellidos["Hugo"])</code>
+						<code>apellidos["James"]="Ford"</code></pre></div>
+						<p class="fragment">Un diccionario, como cualquier otra estructura, admite cualquier tipo de dato (incluso otro diccionario).</p>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Estructuras de control</h2>
+						<p>Permiten controlar la ejecución del programa en función de una serie de supuestos. Podemos crear condiciones de ejecución, repeticiones...</p>
+					</section>
+					<section>
+						<h3>Condicionales</h3>
+						<p>Determinan la secuencia de código a ejecutar en función de la veracidad de una condición</p>
+						<pre><code>numero = int(raw_input())
+if numero % 2 == 0:
+	print("El número es par")
+else:
+	print("El número es impar")
+						</code></pre>
+					</section>
+					<section>
+						<h3>La sintaxis de Python</h3>
+						<!--<p>Todo bloque de código tiene que estar delimitado. En muchos lenguajes se utilizan llaves ({,}) u otro símbolo similar para agrupar sentencias que deben ejecutarse en el mismo ámbito (dentro de una sentencia condicional, una función...). Python, para permitir una mayor legibilidad, determina el ámbito según el número de espacios que lo preceden (o tabulados)</p>-->
+						<p class="fragment">Todo conjunto de instrucciones tiene que estar delimitado.</p>
+						<p class="fragment">En muchos lenguajes se utilizan llaves ({,}) u otro símbolo similar.</p>
+						<p class="fragment">Python, para permitir una mayor legibilidad, determina el ámbito según el número de espacios que lo preceden (o tabulados). <span style="color:#FF5E99">Importante:</span>  Hay que ser consistente.</p>
+					</section>
+					<section>
+					<p>Ejemplo de la sintaxis de Python</p>
+					<div>
+						<pre><code>if numero % 2 == 0:
+  print("Estoy dentro del condicional")
+  if numero == 4:
+    print("En el segundo condicional")
+  print("En el primer condicional")
+print("Fuera de los dos condicionales")</code></pre>
+</div>
+<div>
+<div class="fragment">
+<p>Comparado con Perl...</p>
+<pre><code>if(numero % 2 == 0){
+  print("Estoy dentro del condicional");
+  if(numero == 4){
+    print("En el segundo condicional");
+  }
+  print("En el primer condicional");
+}
+print("Fuera de los dos condicionales");</code></pre>
+</div>
+</div>
+
+					</section>
+					<section>
+						<h3>Bucles</h3>
+						<p>Un bucle es una secuencia de instrucciones que se repiten según una condición</p>
+						<pre><code style="display:block;text-align:left">numero=0
+while numero &gt; 5:
+&emsp;&emsp;numero = numero + 1</code></pre>
+					<div class="fragment"><p>Iterar por los elementos de una estructura es sencillo:</p>
+						<pre><code style="display:block;text-align:left">for elemento in [0,1,2,3,4,5,6,7,8,9]:
+  print(elemento)</code></pre>
+	</div>
+					</section>
+					<section>
+						<h3>Salida de una iteración</h3>
+						<div>
+						<p>Una iteración termina cuando</p>
+						<ul>
+							<li>Se terminan las instrucciones del bucle (salida <em>limpia</em>).</li>
+							<li>Se ejecuta la instrucción <code>continue</code>, pasando a la siguiente ejecución.</li>
+						</ul>
+						</div>
+						<div class="fragment">
+						<p>Se termina un bucle cuando</p>
+						<ul>
+							<li>Se ejecuta la instrucción <code>break</code>, que termina la iteración actual y el bucle inmediatamente.</li>
+							<li>La condición del bucle no es cierta (y si no es cierta al comenzar el bucle, nunca se ejecutará).</li>
+						</ul>
+						</div>
+					</section>
+					<section>
+						<h3>Ejemplos</h3>
+						<pre><code>lista = []
+cadena = raw_input("¡Dame una cadena!\n")
+while cadena != "":
+  lista.append(cadena)
+  cadena = raw_input("¡Dame una cadena!\n")
+else:
+  for elemento in lista:
+    print(elemento)</code></pre>
+					</section>
+				</section>
+				<section>
+					<h2>Funciones</h2>
+					<p>Una función es un conjunto invocable de sentencias, que acepta datos de entrada y emite un dato como salida</p>
+					<p>Una vez definidas pueden ser utilizadas en cualquier punto del código.</p>
+					<pre><code style="display:block;text-align:left">def sumar(sumando1, sumando2):
+  suma = sumando1 + sumando2
+  return suma
+
+resultado = sumar(3,2)</code></pre>
+				</section>
+				<section>
+					<section>
+						<h2>Expresiones regulares</h2>
+						<p>Representación de un lenguaje (conjunto de cadenas de caracteres) mediante un modelo de patrones.</p>
+						<p>Permiten identificar cadenas de texto que cumplan una serie de reglas.</p>
+						<p>Consiste en un conjunto de caracteres que representan letras, números, símbolos, o conjuntos de estos</p>
+						<pre><code>[], (), {}, ., +, ?, |,* A-Z, a-z, 1-9, \d, \w, ^,$</code></pre>
+					</section>
+					<section>
+						<p>Caracteres</p>
+						<table style='font-size:0.8em;width:1200px;'>
+							<thead>
+								<tr>
+									<th></th>
+									<th colspan='19'></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Letras y números</td>
+									<td>Capturan la letra o el número al que representan.</td>
+								</tr>
+								<tr>
+									<td>?</td>
+									<td>Uno o ningún caracter</td>
+								</tr>
+								<tr>
+									<td>*</td>
+									<td>Entre 0 e infinitos caracteres</td>
+								</tr>
+								<tr>
+									<td>+</td>
+									<td>Entre 1 e infinitos caracteres</td>
+								</tr>
+								<tr>
+									<td>{3}, {3,9}</td>
+									<td>Número finito de caracteres a capturar</td>
+								</tr>
+								<tr>
+									<td>(abc)</td>
+									<td>Todo lo que esté dentro de los paréntesis como conjunto</td>
+								</tr>
+								<tr>
+									<td>[A-Z], [1-9], [a-z], [ab314%]</td>
+									<td>Cualquiera de los caracteres (o rangos) incluidos</td>
+								</tr>
+								<tr>
+									<td>\d, \w, \t, \n</td>
+									<td>Números, palabras, tabulador, nueva línea...</td>
+								</tr>
+								<tr>
+									<td>^, $</td>
+									<td>Principio y final de línea</td>
+								</tr>
+								<tr>
+									<td>|</td>
+									<td>Los dos lados entre el | son evaluados</td>
+								</tr>
+							</tbody>
+						</table>
+						<p class="fragment">Las expresiones regulares son un lenguaje por sí solas.</p>
+						<p class="fragment">Referencia: <a href="https://docs.python.org/2/library/re.html">documentación de Python</a></p>
+					</section>
+					<section>
+						
+						Capturar únicamente los dígitos en
+						<pre>abc123xyz
+define “123”
+var g = 123;</pre>
+						<pre><code>\d+</code></pre>
+
+						Capturar números de teléfono
+						<pre><code>([986])\d{8}</code></pre>
+						Capturar los números de teléfono de Salamanca
+						<pre><code>(923)\d{6}</code></pre>
+					</section>
+					<section>
+						Capturar un fragmento y cualquier cosa que venga a continuación en
+						<pre>diego escribió: "Hola"
+dani escribió: "Hola"
+diego escribió: "¿Qué tal?"
+dani escribió: "Bien"
+</pre>
+<pre class="fragment"><code>diego.*</code></pre>
+					</section>
+					<section>
+						Capturar DNIs
+						<pre><code>(\d){7,8}[A-Z]</code></pre>
+						Capturar secuencias que pueden o pueden no estar:
+						<pre>aabbaa
+aaaa
+aabbccaa
+						</pre>
+						<pre><code>aa(bb)?(cc)?aa</code></pre>
+					</section>
+				</section>
+				<section>
+					<h2><code>re</code>, uso de regex en Python</h2>
+					Python incluye en la instalación básica el módulo <code>re</code>, que permite trabajar con expresiones regulares sin más añadidos.
+					<pre><code>import re
+prog=re.compile('\d+')
+resultado = prog.match(cadena)</code></pre>
+<pre><code>import re
+resultado = re.match('\d+', cadena)
+resultado = re.match('diego', cadena, re.IGNORECASE)
+resultado = re.match('diego', cadena, re.DOTALL)
+resultado = re.match('diego', cadena, re.MULTILINE)
+re.search('diego', cadena)
+re.findall('923', cadena)
+</code></pre>
+				</section>
+				<section>
+					<section>
+						<h2>Módulos</h2>
+						<p>Reinventar la rueda no suele ser una buena práctica</p>
+						<p>Existen gran cantidad de bibliotecas para problemas comunes en casi todo tipo de ámbitos</p>
+						<p></p>
+					</section>
+					<section>
+						<h2>Módulos</h2>
+						<pre><code>from numpy import array, abs
+negativos = array([-1,-2,-3,-4])
+positivos = abs(negativos)
+print(positivos)</code></pre>
+					</section>
+					<section>
+						<h2>Módulos</h2>
+						<p>Los módulos más comunes suelen ser incluidos en la mayoría de distribuciones de Python</p>
+						<p>En caso de que un módulo no esté incluido, podemos descargarlo y añadirlo a nuestro entorno, o usar <code>pip</code></p>
+						<pre class="fragment"><code>pip install opencv
+> Downloading/unpacking requests
+...</code></pre>
+					</section>
+					<section>
+						<h2><code>pip</code></h2>
+						<p><code>pip</code> se encarga de gestionar dependencias entre módulos e instalar nuevos componentes</p>
+						<p>Utiliza un mecanismo de uso similar a herramientas como <em>Advanced Package Tool</em>, <em>CPAN</em>, etc...</p>
+						<pre><code>pip install opencv
+pip install -U opencv
+pip uninstall opencv
+pip list
+pip search &lt;consulta&gt;
+pip help &lt;comando&gt;</code></pre>
+					</section>
+				</section>
+				<section>
+				<h2>Trabajos realizados en la USAL</h2>
+				</section>
+				<section>
+					<section>
+						<h2>Hablemos de secuenciación</h2>
+						<img src="images/chistePGH.jpg">
+					</section>
+					<section>
+						<h3>Hablemos de secuenciación</h3>
+							<ul style:'color:white;'>
+								<li><p><span style='color:#ffe599'>Mendel (1865):</span> Detección y estudio de la herencia</p></li>
+								<li><p><span style='color:#ffe599'>Miescher (1868):</span> Aislamiento del ADN</p></li>
+								<li><p><span style='color:#ffe599'>Griffith (1928):</span> ADN = Responsable de la herencia</p></li>
+								<li><p><span style='color:#ffe599'>Alguien (1939):</span> ¿ARN implicado en síntesis protéica?</p></li>
+								<li><p><span style='color:#ffe599'>Severo Ochoa (1959):</span> NOBEL, descubre la transcripción ADN-ARN</p></li>
+								<li><p><span style='color:#ffe599'>Crick, Brenner & cols. (1961):</span> 3 nucleótidos codifican un aminoácido</p></li>
+							</ul>
+					</section>
+					<section>
+						<h3>Hablemos de secuenciación</h3>
+							<ul style:'color:white;'>
+								<li><p><span style='color:#ffe599'>Watson y Crick (1950-1970):</span></p></li>
+								<ul>
+									<li><p><span style='color:#ffe599'>1953:</span> Postulan la estructura en doble hélice</p></li>
+									<li><p><span style='color:#ffe599'>1953:</span> Crick enuncia el dogma central de la biología</p></li>
+									<li><p><span style='color:#ffe599'>1962:</span> NOBEL, descubren la estructura en doble hélice</p></li>
+									<li><p><span style='color:#ffe599'>1966:</span> Finalizan sus estudios dobre el cifrado del ADN</p></li>
+								</ul>		
+								
+							</ul>
+					</section>
+					<section>
+						<h3>Hablemos de secuenciación</h3>
+							<ul style:'color:white;'>
+								<li><p><span style='color:#ffe599'>Walter Fiers (1972):</span> Secuenciación del genoma del BacteriófagoMS2</p></li>
+								<li><p><span style='color:#ffe599'>Gilbert y Maxam (1973):</span> Secuenciación de 24 pares de bases ('punto corrido')</p></li>
+								<li><p><span style='color:#ffe599'>Sanger (1975):</span> Método de terminación de la cadena: Base del PGH</p></li>
+								<li><p><span style='color:#ffe599'>Mucha gente (1990-2003):</span> Proyecto Genoma Humano</p></li>
+								<li><p><span style='color:#ffe599'>Ion Torrent Systems Inc. (2010):</span> Método NextGenSeq Ion Torrent</p></li>
+							</ul>
+					</section>
+					<section>
+						<h3>Método de Sanger: Terminación de la cadena</h3>
+						<ul>
+							<li><p>Separación una cadena de ADN y adición cebador fluorescente y ADN polimerasa</p></li>
+							<li><p>Adición dNTP (desoxinucleótidos trifosfato)</p></li>
+							<li><p>Adición 1 ddNTP (didesoxinucleótidos trifosfato)</p></li>
+							<li><p>Extracción de las secuencias y electroforésis en gel</p></li>
+							<li><p>Repetición con otro ddNTP</p></li>
+							<li><p>Lectura 'a mano' de la fluorescencia</p></li>
+						</ul>
+					</section>
+					<section>
+							<h2>Next Generation Sequencing</h2>
+						<div class='fragment'>
+							<h3>Illumina Solexa</h3>
+							<ul>
+								<li><p>Basado en el método de Sanger, pero automatizado</p></li>
+								<li><p>Toma de imágenes por cada adición</p></li>
+							</ul>
+						</div>
+						<div class='fragment'>
+							<h3>Ion Torrent</h3>
+							<ul>
+								<li><p>Se van añadiendo tipos de nucleótidos diferentes cada vez</p></li>
+								<li><p>Sensibilidad a protones producidos en la polimerización</p></li>
+							</ul>
+						</div>
+					</section>
+				</section>
+				<section>
+					<h2 style='color:white'>PGH ¿Y ahora qué?</h2>
+					<h3 class='fragment'>Proyecto ENCODE</h3>
+					<h3 class='fragment'>1000 Genomes Project</h3>
+					<h3 class='fragment'>Roadmap Epigenomics Project</h3>
+					<h3 class='fragment'>International Cancer Genome Commitee</h3>
+				</section>
+				<section>
+					<section>
+					<h1>Más cosas chulas</h1>
+					</section>
+					<section>
+						<h3>Acoplamiento de secuencias y estudios evolutivos</h3>
+						<img src='images/seqalign.jpg' width='70%'>
+					</section>
+					<section>
+						<h3>Alineamiento estructural de proteínas</h3>
+
+						<img src='images/protacopl.png'>
+
+					</section>
+					<section>
+						<h3>Interpretación de MicroArrays</h3>
+						<img src='images/microarray.jpeg' width='50%'>
+					</section>
+					<section>
+						<h3><a href='http://www.openworm.org/'>OpenWorm</a></h3>
+						<img src="images/openworm.png">
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>¿Qué es el ADN?</h2>
+						<ul>
+							<li>Macromolécula de desoxirribonucleótidos</li>
+							<li>Se forman por:
+								<ul>
+									<li>Un azúcar (desoxirribosa)</li>
+									<li>Un fosfato (H₃PO₄)</li>
+									<li>Una base nitrogenada (Adenina, Timina, Citosina y Guanina)</li>
+								</ul>
+							<li>Contiene la información genética de los seres vivos (no todos)</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Su estructura...</h2>
+						<p>Primaria: <p class="fragment" text-align='left'>Doble cadena lineal polarizada</p></p>
+						<p>Secundaria: <p class="fragment" text-align='left'>Doble hélice dextrógira</p></p>
+						<p>Terciaria: <p class="fragment" text-align='left'>Compactación hasta formar cromosoma</p></p>
+					</section>
+					<section>
+						<h3>Inversa</h3>
+						<div class='fragment'>
+						<pre><code>dna = raw_input('Escriba una cadena de DNA: ')
+inversa = dna[::-1]</code></pre>
+</div>
+					</section>
+					<section>
+						<h2>Complementareidad de bases</h2>
+						<img src="images/estructuraADN.png" width="800px" alt="Complementareidad de bases">
+						<br>
+						<p>Es debida a los puentes de hidrógeno</p>
+					</section>
+					<section>
+						<h3>Complementaria</h3>
+						<div class='fragment'>
+						<pre><code>compl_dic = {'A':'T','T':'A','C':'G','G':'C'}
+dna = raw_input('Escriba una cadena de DNA: ')
+dna = dna.upper()
+compl = ''
+for nuc in dna:
+    compl += compl_dic[nuc]</code></pre>
+</div>
+						<div class='fragment'>
+						<h3>Inversa Complementaria</h3>
+						<pre><code>dna = raw_input('Escriba una cadena de DNA: ')
+inversa = dna[::-1]
+compl_dic = {'A':'T','T':'A','C':'G','G':'C'}
+invcompl = ''
+for nuc in inversa:
+    invcompl += compl_dic[nuc]</code></pre>
+</div>
+					</section>
+					<section>
+						<h2>Dogma central de la biología molecular</h2>
+						<h4>'Un gen, una enzima.</h4>
+
+						<div align="left" style='float:left'>
+							<p>Replicación: <p class="fragment">ADN se multiplica -> ADN</p></p>
+							<p>Transcripción: <p class="fragment">El ADN se interpreta -> ARNm</p></p>
+						</div>
+
+						<div align="right" style='float:right'>							
+							<p>Traducción: <p class="fragment">ARNm -> proteína</p></p>
+							<p>Catálisis: <p class="fragment">proteína -> reacción</p></p>
+						</div>
+					</section>
+					<section>
+						<h2>Replicación</h2>
+						<iframe width="640" height="400" src="https://www.youtube.com/embed/27TxKoFU2Nw?start=118" frameborder="0" allowfullscreen></iframe>
+						<p>Una cadena de ADN se desenrolla y enzimas ayudan a que se unan a las dos hebras los nucleótidos complementarios, resultando dos cadenas.</p>
+					</section>
+					<section>
+						<h2>Transcripción</h2>
+						<iframe width="640" height="360" src="https://www.youtube.com/embed/M568QP1K3sM?rel=0&start=100&end=211&autoplay=0" frameborder="0" allowfullscreen></iframe>
+						<p>Se sintetiza una cadena de ARNm (mensajero) a partir de un ADN. Este es el intermediario para la expresión del gen.</p>
+					</section>
+					<section>
+						<h3>Transcripción</h3>
+						<div class='fragment'>
+						<pre><code>dna = raw_input('Escriba una cadena de DNA: ')
+trans_dic = {'A':'U','T':'A','C':'G','G':'C'}
+mrna = ''
+for nuc in dna:
+    mrna += trans_dic[nuc]</code></pre>
+</div>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>¿Qué es el ARN?</h2>
+						<ul>
+							<li>Macromolécula de ribonucleótidos</li>
+							<li>Se forman por:
+								<ul>
+									<li>Un azúcar (ribosa)</li>
+									<li>Un fosfato (H₃PO₄)</li>
+									<li>Una base nitrogenada (Adenina, Uracilo, Citosina y Guanina)</li>
+								</ul>
+							<li>Contiene la información genética de algunos virus</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Pasar de ADN a ARN (no transcripción)</h3>
+						<div class='fragment'>
+						<pre><code>dna = raw_input('Escriba una cadena de DNA: ')
+trans_dic = {'A':'A','T':'U','C':'C','G':'G'}
+rna = ''
+for nuc in dna:
+    rna += trans_dic[nuc]</code></pre></div>
+						<div class='fragment'>
+						<h3>Otra forma</h3>
+						<pre><code>dna = raw_input('Escriba una cadena de DNA: ')
+rna = dna.replace('T','U')
+</code></pre></div>
+					</section>
+					<section>
+						<h2>ARN mensajero (ARN<h2b>m</h2b>)</h2>
+						<br>
+						<ul>
+							<li>Copia la cadena de ADN de forma complementaria</li>
+							<br>
+							<li>Paso intermedio para la expresión del gen</li>
+						</ul>
+					</section>
+					<section>
+
+						<div class='fragment' style='float:left; width:50%; margin-right:60px'>
+							<h3>Intrones</h3>
+							<p>Fragmentos de ARNm que no contienen información genética, o que contienen información complementaria, alternativa, o antigua.</p>
+						</div>
+						<div class='fragment' style='float:right; width:50%; margin-left:30px'>
+							<h3>Exones</h3>
+							<p>Fragmentos de ARNm que se traducen a proteína. Son el gen codificante propiamente dicho</p>
+						</div>
+					</section>
+					<section>
+						<h2>Intrones y Exones</h2>
+						<div class='fragment'>
+						<pre><code>dna = 'ACTGATGGATTACGATCGATCGATCGATCTACGTACGATCGTAAAATC'
+coords = [[5,13],[21,44]]
+dna_final = ''
+for coord_set in coords:
+	dna_final += dna[coord_set[0]-1:coord_set[1]]
+</code></pre>	
+						</div>
+					</section>
+					<section>
+						<h2>ARN transferente (ARN<h2b>t</h2b>)</h2>
+						<p>Lleva unido un aminoácido, identificado por tres nucleótidos del ARNm (codón)</p>
+					</section>
+					<section>
+						<h2>Traducción</h2>
+						<iframe width="640" height="360" src="https://www.youtube.com/embed/M568QP1K3sM?rel=0&start=221&end=390&autoplay=0" frameborder="0" allowfullscreen></iframe>
+						<p>La hebra de ARNm se une a un ribosoma. Este une una parte complementaria del ARNt (anticodón) al ARNm (codón) y crea enlaces entre los sucesivos aminoácidos.</p>
+					<section>
+					</section>
+					</section>
+					<section>
+						<h2>Código genético (ADN)</h2>
+						<table style='font-size:0.8em;'>
+							<thead>
+								<tr>
+									<th></th>
+									<th colspan='12'>Segunda Letra</th>
+								</tr>
+								<tr>
+									<th colspan='3'> </th>
+									<th>T</th>
+									<th> </th>
+									<th>C</th>
+									<th> </th>
+									<th>A</th>
+									<th> </th>
+									<th>G</th>
+									<th colspan='5'> </th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td rowspan='16' style='line-height:0.8em; font-weight:bold'>P<br>r<br>i<br>m<br>e<br>r<br>a<br><br>L<br>e<br>t<br>r<br>a</td>
+									<td rowspan='17' style='color: #222'>  .</td>
+									<td rowspan='4'><span style='color: #222'>_</span>T<span style='color: #222'>_</span></td>
+									<td>TTT</td>
+									<td rowspan='2' style='color: #3278AA;'>Phe</td>
+									<td>TCT</td>
+									<td rowspan='4' style='color: #3278AA;'>Ser</td>
+									<td>TAT</td>
+									<td rowspan='2' style='color: #3278AA;'>Tyr</td>
+									<td>TGT</td>
+									<td rowspan='2' style='color: #3278AA;'>Cys</td>
+									<td><span style='color: #222'>_</span>T<span style='color: #222'>_</span></td>
+									<td rowspan='17' style='color: #222'>  .</td>
+									<td rowspan='16' style='line-height:0.8em; font-weight:bold'>T<br>e<br>r<br>c<br>e<br>r<br>a<br><br>L<br>e<br>t<br>r<br>a</td>
+								</tr>
+								<tr>
+									<td>TTC</td>
+									<td>TCC</td>
+									<td>TAC</td>
+									<td>TGC</td>
+									<td>C</td>
+									
+								</tr>
+								<tr>
+									<td>TTA</td>
+									<td rowspan='2' style='color: #3278AA;'>Leu</td>
+									<td>TCA</td>
+									<td>TAA</td>
+									<td rowspan='2' style='color: red;'>Stop</td>
+									<td>TGA</td>
+									<td style='color: red;'>Stop</td>
+									<td>A</td>
+
+								</tr>
+								<tr>
+									<td>TTG</td>
+									<td>TCG</td>
+									<td>TAG</td>
+									<td>TGG</td>
+									<td style='color: #3278AA;'>Trp</td>
+									<td>G</td>
+
+								</tr>
+								<!-- Segunda gran fila (C)-->
+								<tr>
+									
+									<td rowspan='4'>C</td>
+									<td>CTT</td>
+									<td rowspan='4' style='color: #3278AA;'>Leu</td>
+									<td>CCT</td>
+									<td rowspan='4' style='color: #3278AA;'>Pro</td>
+									<td>CAT</td>
+									<td rowspan='2' style='color: #3278AA;'>His</td>
+									<td>CGT</td>
+									<td rowspan='4' style='color: #3278AA;'>Arg</td>
+									<td>T</td>
+									
+								</tr>
+								<tr>
+									<td>CTC</td>
+									<td>CCC</td>
+									<td>CAC</td>
+									<td>CGC</td>
+									<td>C</td>
+									
+								</tr>
+								<tr>
+									<td>CTA</td>
+									<td>CCA</td>
+									<td>CAA</td>
+									<td rowspan='2' style='color: #3278AA;'>Gln</td>
+									<td>CGA</td>
+									<td>A</td>
+
+								</tr>
+								<tr>
+									<td>CTG</td>
+									<td>CCG</td>
+									<td>CAG</td>
+									<td>CGG</td>
+									<td>G</td>
+
+								</tr>
+								<!-- Tercera gran fila (A) -->
+								<tr>
+									
+									<td rowspan='4'>A</td>
+									<td>ATT</td>
+									<td rowspan='3' style='color: #3278AA;'>Ile</td>
+									<td>ACT</td>
+									<td rowspan='4' style='color: #3278AA;'>Thr</td>
+									<td>AAT</td>
+									<td rowspan='2' style='color: #3278AA;'>Asn</td>
+									<td>AGT</td>
+									<td rowspan='2' style='color: #3278AA;'>Ser</td>
+									<td>T</td>
+									
+								</tr>
+								<tr>
+									<td>ATC</td>
+									<td>ACC</td>
+									<td>AAC</td>
+									<td>AGC</td>
+									<td>C</td>
+									
+								</tr>
+								<tr>
+									<td>ATA</td>
+									<td>ACA</td>
+									<td>AAA</td>
+									<td rowspan='2' style='color: #3278AA;'>Lys</td>
+									<td>AGA</td>
+									<td rowspan='2' style='color: #3278AA;'>Arg</td>
+									<td>A</td>
+
+								</tr>
+								<tr>
+									<td>ATG</td>
+									<td style='color: green'>Met</td>
+									<td>ATG</td>
+									<td>AAG</td>
+									<td>AGG</td>
+									<td>G</td>
+
+								</tr>
+								<!-- Cuarta gran fila (G) -->
+								<tr>
+									
+									<td rowspan='4'>A</td>
+									<td>GTT</td>
+									<td rowspan='4' style='color: #3278AA;'>Val</td>
+									<td>GCT</td>
+									<td rowspan='4' style='color: #3278AA;'>Ala</td>
+									<td>GAT</td>
+									<td rowspan='2' style='color: #3278AA;'>Asp</td>
+									<td>GGT</td>
+									<td rowspan='4' style='color: #3278AA;'>Gly</td>
+									<td>T</td>
+									
+								</tr>
+								<tr>
+									<td>GTC</td>
+									<td>GCC</td>
+									<td>GAC</td>
+									<td>GGC</td>
+									<td>C</td>
+									
+								</tr>
+								<tr>
+									<td>GTA</td>
+									<td>GCA</td>
+									<td>GAA</td>
+									<td rowspan='2' style='color: #3278AA;'>Glu</td>
+									<td>GGA</td>
+									<td>A</td>
+
+								</tr>
+								<tr>
+									<td>GTG</td>
+									<td>GCG</td>
+									<td>GAG</td>
+									<td>GGG</td>
+									<td>G</td>
+
+								</tr>
+								<tr>
+									<td colspan='13'>*Cada codón corresponde a un aa</td>
+								</tr>
+
+							</tbody>
+						</table>
+					</section>
+					<section>
+						<h2>Diccionario 'DNA gencode'</h2>
+						<div>
+						<pre><code>gencode = {
+  'ATA':'I', 'ATC':'I', 'ATT':'I', 'ATG':'M',
+  'ACA':'T', 'ACC':'T', 'ACG':'T', 'ACT':'T',
+  'AAC':'N', 'AAT':'N', 'AAA':'K', 'AAG':'K',
+  'AGC':'S', 'AGT':'S', 'AGA':'R', 'AGG':'R',
+  'CTA':'L', 'CTC':'L', 'CTG':'L', 'CTT':'L',
+  'CCA':'P', 'CCC':'P', 'CCG':'P', 'CCT':'P',
+  'CAC':'H', 'CAT':'H', 'CAA':'Q', 'CAG':'Q',
+  'CGA':'R', 'CGC':'R', 'CGG':'R', 'CGT':'R',
+  'GTA':'V', 'GTC':'V', 'GTG':'V', 'GTT':'V',
+  'GCA':'A', 'GCC':'A', 'GCG':'A', 'GCT':'A',
+  'GAC':'D', 'GAT':'D', 'GAA':'E', 'GAG':'E',
+  'GGA':'G', 'GGC':'G', 'GGG':'G', 'GGT':'G',
+  'TCA':'S', 'TCC':'S', 'TCG':'S', 'TCT':'S',
+  'TTC':'F', 'TTT':'F', 'TTA':'L', 'TTG':'L',
+  'TAC':'Y', 'TAT':'Y', 'TAA':'_', 'TAG':'_',
+  'TGC':'C', 'TGT':'C', 'TGA':'_', 'TGG':'W'}
+</code></pre></div>
+					</section>
+					<section>
+						<h2>Código genético (ARN<h2b>m</h2b>)</h2>					
+						<table style='font-size:0.8em;'>
+							<thead>
+								<tr>
+									<th></th>
+									<th colspan='12'>Segunda Letra</th>
+								</tr>
+								<tr>
+									<th colspan='3'> </th>
+									<th>U</th>
+									<th> </th>
+									<th>C</th>
+									<th> </th>
+									<th>A</th>
+									<th> </th>
+									<th>G</th>
+									<th colspan='5'> </th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td rowspan='16' style='line-height:0.8em; font-weight:bold'>P<br>r<br>i<br>m<br>e<br>r<br>a<br><br>L<br>e<br>t<br>r<br>a</td>
+									<td rowspan='17' style='color: #222'>  .</td>
+									<td rowspan='4'><span style='color: #222'>_</span>U<span style='color: #222'>_</span></td>
+									<td>UUU</td>
+									<td rowspan='2' style='color: #3278AA;'>Phe</td>
+									<td>UCU</td>
+									<td rowspan='4' style='color: #3278AA;'>Ser</td>
+									<td>UAU</td>
+									<td rowspan='2' style='color: #3278AA;'>Tyr</td>
+									<td>UGU</td>
+									<td rowspan='2' style='color: #3278AA;'>Cys</td>
+									<td><span style='color: #222'>_</span>U<span style='color: #222'>_</span></td>
+									<td rowspan='17' style='color: #222'>  .</td>
+									<td rowspan='16' style='line-height:0.8em; font-weight:bold'>T<br>e<br>r<br>c<br>e<br>r<br>a<br><br>L<br>e<br>t<br>r<br>a</td>
+								</tr>
+								<tr>
+									<td>UUC</td>
+									<td>UCC</td>
+									<td>UAC</td>
+									<td>UGC</td>
+									<td>C</td>
+									
+								</tr>
+								<tr>
+									<td>UUA</td>
+									<td rowspan='2' style='color: #3278AA;'>Leu</td>
+									<td>UCA</td>
+									<td>UAA</td>
+									<td rowspan='2' style='color: red;'>Stop</td>
+									<td>UGA</td>
+									<td style='color: red;'>Stop</td>
+									<td>A</td>
+
+								</tr>
+								<tr>
+									<td>UUG</td>
+									<td>UCG</td>
+									<td>UAG</td>
+									<td>UGG</td>
+									<td style='color: #3278AA;'>Trp</td>
+									<td>G</td>
+
+								</tr>
+								<!-- Segunda gran fila (C)-->
+								<tr>
+									
+									<td rowspan='4'>C</td>
+									<td>CUU</td>
+									<td rowspan='4' style='color: #3278AA;'>Leu</td>
+									<td>CCU</td>
+									<td rowspan='4' style='color: #3278AA;'>Pro</td>
+									<td>CAU</td>
+									<td rowspan='2' style='color: #3278AA;'>His</td>
+									<td>CGU</td>
+									<td rowspan='4' style='color: #3278AA;'>Arg</td>
+									<td>U</td>
+									
+								</tr>
+								<tr>
+									<td>CUC</td>
+									<td>CCC</td>
+									<td>CAC</td>
+									<td>CGC</td>
+									<td>C</td>
+									
+								</tr>
+								<tr>
+									<td>CUA</td>
+									<td>CCA</td>
+									<td>CAA</td>
+									<td rowspan='2' style='color: #3278AA;'>Gln</td>
+									<td>CGA</td>
+									<td>A</td>
+
+								</tr>
+								<tr>
+									<td>CUG</td>
+									<td>CCG</td>
+									<td>CAG</td>
+									<td>CGG</td>
+									<td>G</td>
+
+								</tr>
+								<!-- Tercera gran fila (A) -->
+								<tr>
+									
+									<td rowspan='4'>A</td>
+									<td>AUU</td>
+									<td rowspan='3' style='color: #3278AA;'>Ile</td>
+									<td>ACU</td>
+									<td rowspan='4' style='color: #3278AA;'>Thr</td>
+									<td>AAU</td>
+									<td rowspan='2' style='color: #3278AA;'>Asn</td>
+									<td>AGU</td>
+									<td rowspan='2' style='color: #3278AA;'>Ser</td>
+									<td>U</td>
+									
+								</tr>
+								<tr>
+									<td>AUC</td>
+									<td>ACC</td>
+									<td>AAC</td>
+									<td>AGC</td>
+									<td>C</td>
+									
+								</tr>
+								<tr>
+									<td>AUA</td>
+									<td>ACA</td>
+									<td>AAA</td>
+									<td rowspan='2' style='color: #3278AA;'>Lys</td>
+									<td>AGA</td>
+									<td rowspan='2' style='color: #3278AA;'>Arg</td>
+									<td>A</td>
+
+								</tr>
+								<tr>
+									<td>AUG</td>
+									<td style='color: green'>Met</td>
+									<td>ACG</td>
+									<td>AAG</td>
+									<td>AGG</td>
+									<td>G</td>
+
+								</tr>
+								<!-- Cuarta gran fila (G) -->
+								<tr>
+									
+									<td rowspan='4'>A</td>
+									<td>GUU</td>
+									<td rowspan='4' style='color: #3278AA;'>Val</td>
+									<td>GCU</td>
+									<td rowspan='4' style='color: #3278AA;'>Ala</td>
+									<td>GAU</td>
+									<td rowspan='2' style='color: #3278AA;'>Asp</td>
+									<td>GGU</td>
+									<td rowspan='4' style='color: #3278AA;'>Gly</td>
+									<td>U</td>
+									
+								</tr>
+								<tr>
+									<td>GUC</td>
+									<td>GCC</td>
+									<td>GAC</td>
+									<td>GGC</td>
+									<td>C</td>
+									
+								</tr>
+								<tr>
+									<td>GUA</td>
+									<td>GCA</td>
+									<td>GAA</td>
+									<td rowspan='2' style='color: #3278AA;'>Glu</td>
+									<td>GGA</td>
+									<td>A</td>
+
+								</tr>
+								<tr>
+									<td>GUG</td>
+									<td>GCG</td>
+									<td>GAG</td>
+									<td>GGG</td>
+									<td>G</td>
+
+								</tr>
+								<tr>
+									<td colspan='13'>*Cada codón corresponde a un aa</td>
+								</tr>
+
+							</tbody>
+						</table>
+					</section>
+					<section>
+						<h2>Diccionario 'ARN gencode'</h2>
+						<div>
+						<pre><code>gencode = {
+ 'AAA': 'K', 'AAC': 'N', 'AAG': 'K', 'AAU': 'N',
+ 'ACA': 'T', 'ACC': 'T', 'ACG': 'T', 'ACU': 'T',
+ 'AGA': 'R', 'AGC': 'S', 'AGG': 'R', 'AGU': 'S',
+ 'AUA': 'I', 'AUC': 'I', 'AUG': 'M', 'AUU': 'I',
+ 'CAA': 'Q', 'CAC': 'H', 'CAG': 'Q', 'CAU': 'H',
+ 'CCA': 'P', 'CCC': 'P', 'CCG': 'P', 'CCU': 'P',
+ 'CGA': 'R', 'CGC': 'R', 'CGG': 'R', 'CGU': 'R',
+ 'CUA': 'L', 'CUC': 'L', 'CUG': 'L', 'CUU': 'L',
+ 'GAA': 'E', 'GAC': 'D', 'GAG': 'E', 'GAU': 'D',
+ 'GCA': 'A', 'GCC': 'A', 'GCG': 'A', 'GCU': 'A',
+ 'GGA': 'G', 'GGC': 'G', 'GGG': 'G', 'GGU': 'G',
+ 'GUA': 'V', 'GUC': 'V', 'GUG': 'V', 'GUU': 'V',
+ 'UAA': '_', 'UAC': 'Y', 'UAG': '_', 'UAU': 'Y',
+ 'UCA': 'S', 'UCC': 'S', 'UCG': 'S', 'UCU': 'S',
+ 'UGA': '_', 'UGC': 'C', 'UGG': 'W', 'UGU': 'C',
+ 'UUA': 'L', 'UUC': 'F', 'UUG': 'L', 'UUU': 'F'}
+ </code></pre></div>
+
+					</section>
+					<section>
+						<h2>¡OJO!</h2>
+						<p>Es importante destacar que en bioinformática sólo se trabaja con una cadena de ADN, por motivos de optimización de almacenamiento.</p>
+						<p>Hay que tener cuidado con los enunciados: 'este ADN codifica...' quiere decir 'usa el código genético de ADN' y 'este ADN se transcribe y se traduce' quiere decir 'transcribe a ARN y usa el código genético de ARN'</p>
+					</section>
+					<section>
+						<h2>Traducción de un ARN</h2>
+						<div>
+						<pre><code>gencode = { ... }
+ARN = 'AGCUAGUCAGUCGAUCGACUGACGACGUUACGAUCGAUC'
+prot = ''
+for i in range(0,len(ARN),3):
+	codon = ARN[i:1+3]
+	prot +=  gencode[codon]
+ </code></pre></div>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Mutaciones</h2>
+						<p>Cambios en el ADN que modifican (o no) la información genética de un organismo</p>
+						<div class='fragment' style='width:50%; float:left;'>
+							<ul>
+								<li><span style='color: #3278AA;'>Génicas:</span> bases o secuencias</li>
+									<ul>
+										<li>Adición</li>
+										<li>Eliminación o Deleción</li>
+										<li>Sustitución</li>
+									</ul>
+							</ul>
+						</div>
+						
+						<div class='fragment' style='width:50%; float:right;'>
+							<ul>
+								<li><span style='color: #3278AA;'>Cromosómicas:</span> fragmentos de cromosoma</li>
+								<ul>
+									<li>Duplicación</li>
+									<li>Deleción</li>
+									<li>Inversión</li>
+									<li>Traslocación</li>
+								</ul>
+							</ul>
+						</div>
+						<div class='fragment' style='; float:left;margin-top:50px'>
+							<ul>
+								<li><span style='color: #3278AA;'>Genómicas:</span> número de cromosomas</li>
+							</ul>
+						</div>
+					</section>
+				</section>
+				<section>
+					<h2>Enzimas de restricción</h2>
+					<iframe width="640" height="400" src="https://www.youtube.com/embed/iuZEpGYOY-k" frameborder="0" allowfullscreen></iframe>
+					<p>Tipo de enzima capaz de reconocer un motivo de ADN y cortar la cadena por ese motivo</p>
+				</section>
+				<section>
+					<h2>Bases de Datos en Bioinformática</h2>
+
+				</section>
+				<section>
+					<section>
+						<h2>¿Informática para Biología o Biología para Informática?</h2>
+					</section>
+					<section>
+						<h3>RNA, pero no ARN</h3>
+						<p>Paradigma de aprendizaje y procesamiento automático inspirado en la forma en que funciona el sistema nervioso de los animales</p>
+						<img class='fragment' src='images/RedNeuronalArtificial.png'>
+					</section>
+					<section>
+						<img src='images/mario.png'>
+					</section>
+					<section>
+						<h3>Algoritmos Genéticos</h3>
+						<p>Serie de pasos organizados que describe el proceso a seguir para solucionar un problema, pero inspirados en la evolución biológica y su base molecular y genética.</p>
+						<img src='images/ga1.png'>
+					</section>
+					<section>
+						<h3>Algoritmos Genéticos</h3>
+						<img src='images/ga2.png'>
+					</section>
+					<section>
+						<h3>Algoritmos Genéticos</h3>
+						<img src='images/ga3.png'>
+					</section>
+					<section>
+						<h3>Algoritmos Genéticos</h3>
+						<img src='images/ga4.png'>
+					</section>
+					<section>
+						<h3>Algoritmos Genéticos</h3>
+						<img src='images/ga5.png'>
+					</section>
+				</section>
+				<section>
+					<h2>Python es más que un lenguaje de programación</h2>
+					<p>La comunidad que se ha formado alrededor del lenguaje ha conseguido crear un ecosistema de desarrollo que ha derivado en una gran cantidad de proyectos basados en el lenguaje</p>
+					<pre><code>import antigravity
+from __future__ import braces</code></pre>
+				</section>
+				<section>
+					<h2>Próximo seminario</h2>
+					<video width="640" height="480" controls>
+						<source src="images/rna1.mp4" type="video/mp4">
+					</video>
+				</section>
+				<section>
+					<video width="640" height="480" controls>
+						<source src="images/rna2.mp4" type="video/mp4">
+					</video>
+					<p><a href="http://usal.acm.org/cursos/ia2">usal.acm.org/cursos/ia2</a></p>
+					<p>Facultad de Ciencias, Aula D3 - Viernes, 27 de Marzo, 2015</p>
+<p>Presentación: 16:00 ~ 17:30
+Talleres: 18:00 ~ 19:30</p>
+				</section>
+				<section>
+					<h2>¡Muchas gracias por venir!</h2>
+					<p>Para cualquier duda, siempre podéis contactarnos personalmente o utilizar <a href="http://usal.acm.org/respuestas/">ACM Respuestas</a></p>
+					<p class="fragment">Todo el código y esta presentación estarán publicados en unos días</p>
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
